@@ -1,0 +1,26 @@
+
+# POST TYPE MANAGEMENT
+    msgid "Creates manageable Timeline items for Knight Labs TimelineJs <a href="http://timeline.knightlab.com">http://timeline.knightlab.com</a>. <strong>ATTENTION:</strong> This plugin requires Advanced Cutsom Fields it to be installed and enabled."
+    msgstr "Cria itens gerenciáveis para a Timeline desenvolvido pela Knight Lab (TimelineJS <a href="http://timeline.knightlab.com">http://timeline.knightlab.com</a>) <strong>ATENÇÃO: </strong>Este plugin requer que o plugin Advanced Custom Fields esteja instalado e habilitado."
+
+    msgid "Add new"
+    msgstr "Novo"
+
+    msgid "New Item"
+    msgstr "Novo"
+
+    msgid "Edit Item"
+    msgstr "Editar"
+
+    msgid "View Item"
+    msgstr "Visualizar"
+
+    msgid "Search Itens"
+    msgstr "Buscar"
+
+    msgid "No registers found"
+    msgstr "Sem registros"
+
+    msgid "No registers found in trash"
+    msgstr "Não existem registros na lixeira"
+# POST TYPE MANAGEMENT

@@ -1,0 +1,26 @@
+
+# POST TYPE MANAGEMENT
+    msgid "Creates manageable Timeline items for Knight Labs TimelineJs <a href="http://timeline.knightlab.com">http://timeline.knightlab.com</a>. <strong>ATTENTION:</strong> This plugin requires Advanced Cutsom Fields it to be installed and enabled."
+    msgstr ""
+
+    msgid "Add new"
+    msgstr ""
+
+    msgid "New Item"
+    msgstr ""
+
+    msgid "Edit Item"
+    msgstr ""
+
+    msgid "View Item"
+    msgstr ""
+
+    msgid "Search Itens"
+    msgstr ""
+
+    msgid "No registers found"
+    msgstr ""
+
+    msgid "No registers found in trash"
+    msgstr ""
+# POST TYPE MANAGEMENT
