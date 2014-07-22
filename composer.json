@@ -1,0 +1,26 @@
+{
+    "name": "redsuns/redsuns-timeline",
+    "description": "Timeline Plugin for Wordpress",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "wordpress",
+        "timeline"
+    ],
+    "authors": [
+        {
+            "name": "Redsuns Tecnologia e Design",
+            "homepage": "http://redsuns.com.br",
+            "role": "Author"
+        },
+        {
+            "name": "Andre Cardoso",
+            "homepage": "http://andrebian.com",
+            "role": "Developer"
+        }
+    ],
+    "homepage": "https://github.com/redsuns/redsuns-timeline",
+    "require": {
+        "php": ">=5.3.3",
+        "composer/installers": "*"
+    }
+}
