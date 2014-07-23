@@ -1,5 +1,11 @@
 #Redsuns Timeline
 
+[![Latest Stable Version](https://poser.pugx.org/redsuns/redsuns-timeline/v/stable.svg)](https://packagist.org/packages/redsuns/redsuns-timeline) [![Total Downloads](https://poser.pugx.org/redsuns/redsuns-timeline/downloads.svg)](https://packagist.org/packages/redsuns/redsuns-timeline) [![Latest Unstable Version](https://poser.pugx.org/redsuns/redsuns-timeline/v/unstable.svg)](https://packagist.org/packages/redsuns/redsuns-timeline) [![License](https://poser.pugx.org/redsuns/redsuns-timeline/license.svg)](https://packagist.org/packages/redsuns/redsuns-timeline)
+
+
+----------
+
+
 Welcome, this is a plugin that provides management for Timeline items. It uses the [TimelineJS][1] from [KnightLab][2] but all maintence of events on timeline are easilly configurable in WordPress admin panel.
 
 ##Requeriments
