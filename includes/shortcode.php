@@ -116,8 +116,6 @@ function shortcode_timeline( $atts = null )
         
         $video = get_field('video');
         $image = get_field('image');
-
-        $media = parse_media($image, $video);
         
         $items[$count] = array(
            'startDate' => date('Y,m,d', strtotime(get_field('initial_date'))),
@@ -125,7 +123,7 @@ function shortcode_timeline( $atts = null )
            'headline' => get_the_title(),
            'text' => get_the_content(),
            'asset' => array(
-               'media' => $media,
+               'media' => parse_media($image, $video),
                'credit' => get_field('media_credit'),
                'caption' => get_field('media_caption'),
            ),
