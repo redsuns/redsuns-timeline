@@ -42,21 +42,182 @@ function register_advanced_custom_fields_post()
  * 
  * @param type $inserted_post
  * @since 0.1
- * @todo Register fields in English and translate it when is need
- * @todo Improve these postmeta updates generating own hash to name fields
- * @todo Fix the ID from post_type... I have to discover how it works...
  */
 function register_fields_to_previous_inserted_post($inserted_post)
 {
-    update_post_meta($inserted_post, 'field_53cd1a6133396', 'a:11:{s:3:"key";s:19:"field_53cd1a6133396";s:5:"label";s:12:"Data Inicial";s:4:"name";s:12:"data_inicial";s:4:"type";s:11:"date_picker";s:12:"instructions";s:0:"";s:8:"required";s:1:"1";s:11:"date_format";s:6:"yymmdd";s:14:"display_format";s:8:"dd/mm/yy";s:9:"first_day";s:1:"0";s:17:"conditional_logic";a:3:{s:6:"status";s:1:"0";s:5:"rules";a:1:{i:0;a:3:{s:5:"field";s:4:"null";s:8:"operator";s:2:"==";s:5:"value";s:0:"";}}s:8:"allorany";s:3:"all";}s:8:"order_no";i:0;}');
-    update_post_meta($inserted_post, 'field_53cd1a8833397', 'a:11:{s:3:"key";s:19:"field_53cd1a8833397";s:5:"label";s:10:"Data Final";s:4:"name";s:10:"data_final";s:4:"type";s:11:"date_picker";s:12:"instructions";s:0:"";s:8:"required";s:1:"1";s:11:"date_format";s:6:"yymmdd";s:14:"display_format";s:8:"dd/mm/yy";s:9:"first_day";s:1:"0";s:17:"conditional_logic";a:3:{s:6:"status";s:1:"0";s:5:"rules";a:1:{i:0;a:3:{s:5:"field";s:4:"null";s:8:"operator";s:2:"==";s:5:"value";s:0:"";}}s:8:"allorany";s:3:"all";}s:8:"order_no";i:1;}');
-    update_post_meta($inserted_post, 'field_53cd4b73ac22e', 'a:11:{s:3:"key";s:19:"field_53cd4b73ac22e";s:5:"label";s:6:"Imagem";s:4:"name";s:6:"imagem";s:4:"type";s:5:"image";s:12:"instructions";s:116:"A imagem tem preferência de exibição. Caso seja adicionado um video no mesmo post somente a imagem será exibida.";s:8:"required";s:1:"0";s:11:"save_format";s:6:"object";s:12:"preview_size";s:6:"medium";s:7:"library";s:3:"all";s:17:"conditional_logic";a:3:{s:6:"status";s:1:"0";s:5:"rules";a:1:{i:0;a:2:{s:5:"field";s:4:"null";s:8:"operator";s:2:"==";}}s:8:"allorany";s:3:"all";}s:8:"order_no";i:2;}');
-    update_post_meta($inserted_post, 'field_53cd4ba8ac22f', 'a:14:{s:3:"key";s:19:"field_53cd4ba8ac22f";s:5:"label";s:6:"Vídeo";s:4:"name";s:5:"video";s:4:"type";s:4:"text";s:12:"instructions";s:178:"Cole o link direto para o video, exemplo: <strong>https://www.youtube.com/watch?v=Rar21SPvYuc</strong>. Se uma imagem foi adicionada anteriromente este vídeo não será exibida.";s:8:"required";s:1:"0";s:13:"default_value";s:0:"";s:11:"placeholder";s:0:"";s:7:"prepend";s:0:"";s:6:"append";s:0:"";s:10:"formatting";s:4:"none";s:9:"maxlength";s:0:"";s:17:"conditional_logic";a:3:{s:6:"status";s:1:"0";s:5:"rules";a:1:{i:0;a:2:{s:5:"field";s:4:"null";s:8:"operator";s:2:"==";}}s:8:"allorany";s:3:"all";}s:8:"order_no";i:3;}');
-    update_post_meta($inserted_post, 'field_53cd4c1eac230', 'a:14:{s:3:"key";s:19:"field_53cd4c1eac230";s:5:"label";s:18:"Crédito da mídia";s:4:"name";s:13:"credito_midia";s:4:"type";s:4:"text";s:12:"instructions";s:83:"Informe os créditos da imagem ou do vídeo que ficará disposto na linha do tempo.";s:8:"required";s:1:"1";s:13:"default_value";s:0:"";s:11:"placeholder";s:0:"";s:7:"prepend";s:0:"";s:6:"append";s:0:"";s:10:"formatting";s:4:"none";s:9:"maxlength";s:3:"255";s:17:"conditional_logic";a:3:{s:6:"status";s:1:"0";s:5:"rules";a:1:{i:0;a:3:{s:5:"field";s:4:"null";s:8:"operator";s:2:"==";s:5:"value";s:0:"";}}s:8:"allorany";s:3:"all";}s:8:"order_no";i:4;}');
-    update_post_meta($inserted_post, 'field_53cd4c63ac231', 'a:14:{s:3:"key";s:19:"field_53cd4c63ac231";s:5:"label";s:16:"Nome Alternativo";s:4:"name";s:16:"nome_alternativo";s:4:"type";s:4:"text";s:12:"instructions";s:110:"Informe o nome alternativo. Este aparecerá sempre que a imagem ou vídeo não for carregado por algum motivo.";s:8:"required";s:1:"1";s:13:"default_value";s:0:"";s:11:"placeholder";s:0:"";s:7:"prepend";s:0:"";s:6:"append";s:0:"";s:10:"formatting";s:4:"html";s:9:"maxlength";s:3:"255";s:17:"conditional_logic";a:3:{s:6:"status";s:1:"0";s:5:"rules";a:1:{i:0;a:3:{s:5:"field";s:4:"null";s:8:"operator";s:2:"==";s:5:"value";s:0:"";}}s:8:"allorany";s:3:"all";}s:8:"order_no";i:5;}');
+    $initial_date_name = 'field_' . substr(md5('redsuns-timeline-initial-date'), 0, 13);
+    $initial_date_options = array(
+        'key' => $initial_date_name,
+        'label' => 'Initial Date',
+        'name' => 'initial_date',
+        'type' => 'date_picker',
+        'instructions' => '',
+        'required' => 1,
+        'date_format' => 'yymmdd',
+        'display_format' => 'dd/mm/yy',
+        'first_day' => 0,
+        'conditional_logic' => array(
+            'status' => 0,
+            'rules' => array(
+                0 => array(
+                    'field' => null,
+                    'operator' => '==',
+                    'value' => ''
+                )
+            ),
+            'allorany' => 'all',
+        ),
+        'order_no' => 0
+    );
+    update_post_meta($inserted_post, $initial_date_name, serialize($initial_date_options));
+    
+    $final_date_name = 'field_' . substr(md5('redsuns-timeline-final-date'), 0, 13);
+    $final_date_options = array(
+        'key' => $final_date_name,
+        'label' => 'Final Date',
+        'name' => 'final_date',
+        'type' => 'date_picker',
+        'instructions' => '',
+        'required' => 1,
+        'date_format' => 'yymmdd',
+        'display_format' => 'dd/mm/yy',
+        'first_day' => 0,
+        'conditional_logic' => array(
+            'status' => 0,
+            'rules' => array(
+                0 => array(
+                    'field' => null,
+                    'operator' => '==',
+                    'value' => ''
+                )
+            ),
+            'allorany' => 'all',
+        ),
+        'order_no' => 1
+    );
+    update_post_meta($inserted_post, $final_date_name, serialize($final_date_options));
+    
+    $image_name = 'field_' . substr(md5('redsuns-timeline-image'), 0, 13);
+    $image_options = array(
+        'key' => $image_name,
+        'label' => 'Image',
+        'name' => 'image',
+        'type' => 'image',
+        'instructions' => 'The image is more relevant than video, so if an image and a video is provided to same post only the image will appear.',
+        'required' => 0,
+        'save_format' => 'object',
+        'preview_size' => 'medium',
+        'library' => 'all',
+        'conditional_logic' => array(
+            'status' => 0,
+            'rules' => array(
+                0 => array(
+                    'field' => null,
+                    'operator' => '=='
+                ),
+            ),
+            'allorany' => 'all',
+        ),
+        'order_no' => 2
+    );
+    update_post_meta($inserted_post, $image_name, serialize($image_options));
+    
+    $video_name = 'field_' . substr(md5('redsuns-timeline-video'), 0, 13);
+    $video_options = array(
+        'key' => $video_name,
+        'label' => 'Video',
+        'name' => 'video',
+        'type' => 'text',
+        'instructions' => 'Paste here the Youtube/Vimeo link. If an image was provided for this post just THE IMAGE will appear.',
+        'required' => 0,
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => '',
+        'conditional_logic' => array(
+            'status' => 0,
+            'rules' => array(
+                0 => array(
+                    'field' => null,
+                    'operator' => '==',
+                ),
+            ),
+            'allorany' => 'all',
+        ),
+        'order_no' => 3
+    );
+    update_post_meta($inserted_post, $video_name, serialize($video_options));
+    
+    $media_credit_name = 'field_' . substr(md5('redsuns-timeline-media-credit'), 0, 13);
+    $media_credit_options = array(
+        'key' => $media_credit_name,
+        'label' => 'Media Credits',
+        'name' => 'media_credit',
+        'type' => 'text',
+        'instructions' => 'Provide here the credits for Image/Video used on this timeline event',
+        'required' => 1,
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => 255,
+        'conditional_logic' => array(
+            'status' => 0,
+            'rules' => array(
+                0 => array(
+                    'field' => null,
+                    'operator' => '==',
+                    'value' => '',
+                ),
+            ),
+            'allorany' => 'all',
+        ),
+        'order_no' => 4,
+    );
+    update_post_meta($inserted_post, $media_credit_name, serialize($media_credit_options));
+    
+    
+    $media_caption_name = 'field_' . substr(md5('redsuns-timeline-media-caption'), 0, 13);
+    $media_caption_options = array(
+        'key' => $media_caption_name,
+        'label' => 'Media Caption',
+        'name' => 'media_caption',
+        'type' => 'text',
+        'instructions' => 'The media caption',
+        'required' => 1,
+        'default_value' => '',
+        'placeholder' => '',
+        'prepend' => '',
+        'append' => '',
+        'formatting' => 'none',
+        'maxlength' => 255,
+        'conditional_logic' => array(
+            'status' => 0,
+            'rules' => array(
+                0 => array(
+                    'field' => null,
+                    'operator' => '==',
+                    'value' => '',
+                ),
+            ),
+            'allorany' => 'all',
+        ),
+        'order_no' => 5,
+    );
+    update_post_meta($inserted_post, $media_caption_name, serialize($media_caption_options));
 
-    //TODO Fix the ID from post_type... I have to discover how it works...
-    update_post_meta($inserted_post, 'rule', 'a:5:{s:5:"param";s:9:"post_type";s:8:"operator";s:2:"==";s:5:"value";s:8:"timeline";s:8:"order_no";i:0;s:8:"group_no";i:0;}');
+    
+    $rule = array(
+        'param' => 'post_type',
+        'operator' => '==',
+        'value' => 'timeline',
+        'order_no' => 0,
+        'group_no' => 0,
+    );
+    update_post_meta($inserted_post, 'rule', serialize($rule));
     update_post_meta($inserted_post, '_edit_last', '1');
     update_post_meta($inserted_post, 'position', 'normal');
     update_post_meta($inserted_post, 'layout', 'default');

@@ -23,4 +23,42 @@
 
     msgid "No registers found in trash"
     msgstr "Não existem registros na lixeira"
+
+    msgid "Timeline Details"
+    msgstr "Detalhes da Timeline"
+
+    msgid "Initial Date"
+    msgstr "Data Inicial"
+
+    msgid "Final Date"
+    msgstr "Data Final"
+
+    msgid "Image"
+    msgstr "Imagem"
+
+    msgid "The image is more relevant than video, so if an image and a video is provided to same post only the image will appear."
+    msgstr "A imagem é mais relevante que o vídeo, desta forma se uma imagem e um video forem adicionados somente a imagem aparecerá na timeline"
+
+    msgid "Paste here the Youtube/Vimeo link. If an image was provided for this post just THE IMAGE will appear."
+    msgstr "Cole aqui o link do Youtube/Vimeo. Se uma imagem já tiver sido carregada SOMENTE ELA APARECERÁ."
+
+    msgid "Media Credits"
+    msgstr "Créditos da mídia"
+
+    msgid "Provide here the credits for Image/Video used on this timeline event"
+    msgstr "Forneça os créditos da Imagem/Video utilizado neste evento da Timeline"
+
+    msgid "Media Alt"
+    msgstr "Nome Alternativo da mídia"
+
+    msgid "The media caption"
+    msgstr "O caption da mídia"
 # POST TYPE MANAGEMENT
+
+
+# MESSAGES
+
+msgid "Sorry, no items to show"
+msgstr "Desculpe mas não existem eventos para a linha do tempo"
+
+# MESSAGES
