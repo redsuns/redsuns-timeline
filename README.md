@@ -80,7 +80,7 @@ Another way to use is calling the shortcode in a custom page template:
 echo do_shortcode('[timeline category-slug]');
 ```
 
-Example: ```[timeline carrer]```
+Example: ```[timeline career]```
 
 ##Author
 
