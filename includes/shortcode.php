@@ -32,9 +32,10 @@ function array_initial_structure()
  * @param string $title
  * @param string $content
  * @param string $initial_date
+ * @param array $atts
  * @return array
  */
-function first_item($title, $content, $initial_date)
+function first_item($title, $content, $initial_date, $atts = null)
 {
     $end_json_content = array_initial_structure();
     
@@ -42,6 +43,17 @@ function first_item($title, $content, $initial_date)
     $end_json_content['timeline']['type'] = 'default';
     $end_json_content['timeline']['text'] = $content;
     $end_json_content['timeline']['startDate'] = date('Y,m,d', strtotime($initial_date));
+    
+    if ( !empty($atts) ) {
+        
+        $term = get_term_by('slug', current($atts), 'timeline-category');
+        
+        $end_json_content['timeline']['headline'] = $term->name;
+        $end_json_content['timeline']['type'] = 'default';
+        $end_json_content['timeline']['text'] = $term->description;
+        $end_json_content['timeline']['startDate'] = date('Y,m,d');
+        
+    }
     
     return $end_json_content;
 }
@@ -106,12 +118,22 @@ function shortcode_timeline( $atts = null )
     $count = 0;
     $items = array();
     
-    query_posts(array('post_type' => 'timeline', 'orderby' => 'id', 'order' => 'ASC'));
+    $args = array(
+        'post_type' => 'timeline',
+        'orderby' => 'id',
+        'order' => 'ASC',
+    );
+    
+    if( !empty($atts) ) {
+        $args['timeline-category'] = current($atts);
+    }
+    
+    query_posts($args);
     
     if ( have_posts() ) : while( have_posts() ) : the_post(); 
         
         if ( 0 === $count ) {
-            $end_json_content = first_item(get_the_title(), get_the_content(), get_field('initial_date'));
+            $end_json_content = first_item(get_the_title(), get_the_content(), get_field('initial_date'), $atts);
         }
         
         $video = get_field('video');
@@ -149,7 +171,7 @@ function shortcode_timeline( $atts = null )
                 source: <?php echo to_json($end_json_content); ?>,
                 debug: true,
                 lang: 'pt-br',
-                start_at_slide: 1,
+                start_at_slide: <?php echo !empty($atts) ? 0 : 1; ?>,
                 font: 'PT'
                }
         </script>

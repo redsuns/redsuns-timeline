@@ -53,12 +53,43 @@
 
     msgid "The media caption"
     msgstr "O caption da mídia"
+
+    msgid "Categories"
+    msgstr "Categorias"
+
+    msgid "Category"
+    msgstr "Categoria"
+
+    msgid "Search Categories"
+    msgstr "Buscar por categorias"
+
+    msgid "All Categories"
+    msgstr "Todas categorias"
+
+    msgid "Parent Category"
+    msgstr "Categoria Pai"
+
+    msgid "Parent Category:"
+    msgstr "Categoria Pai:"
+
+    msgid "Edit Category"
+    msgstr "Editar Categoria"
+
+    msgid "Update Category"
+    msgstr "Atualizar Categoria"
+
+    msgid "Add New Category"
+    msgstr "Adicionar nova Categoria"
+
+    msgid "New Category Name"
+    msgstr "Novo nome da categoria"
+
 # POST TYPE MANAGEMENT
 
 
 # MESSAGES
 
-msgid "Sorry, no items to show"
-msgstr "Desculpe mas não existem eventos para a linha do tempo"
+    msgid "Sorry, no items to show"
+    msgstr "Desculpe mas não existem eventos para a linha do tempo"
 
 # MESSAGES

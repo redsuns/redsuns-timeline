@@ -55,6 +55,36 @@
     msgid "The media caption"
     msgstr ""
 
+    msgid "Categories"
+    msgstr ""
+
+    msgid "Category"
+    msgstr ""
+
+    msgid "Search Categories"
+    msgstr ""
+
+    msgid "All Categories"
+    msgstr ""
+
+    msgid "Parent Category"
+    msgstr ""
+
+    msgid "Parent Category:"
+    msgstr ""
+
+    msgid "Edit Category"
+    msgstr ""
+
+    msgid "Update Category"
+    msgstr ""
+
+    msgid "Add New Category"
+    msgstr ""
+
+    msgid "New Category Name"
+    msgstr ""
+
 # POST TYPE MANAGEMENT
 
 

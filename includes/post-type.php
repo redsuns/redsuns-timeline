@@ -44,6 +44,41 @@ function post_type_timeline()
 
     register_post_type( 'timeline' , $args );
     flush_rewrite_rules();
+    
+    register_custom_taxonomy();
 }
 
 add_action('init', 'post_type_timeline');
+
+
+/**
+ * Register taxonomy for Timeline post type
+ * @since 0.1
+ */
+function register_custom_taxonomy()
+{
+    $labels = array(
+            'name'              => __( 'Categories', 'redsuns-timeline' ),
+            'singular_name'     => __( 'Category', 'redsuns-timeline' ),
+            'search_items'      => __( 'Search Categories', 'redsuns-timeline' ),
+            'all_items'         => __( 'All Categories', 'redsuns-timeline' ),
+            'parent_item'       => __( 'Parent Category', 'redsuns-timeline' ),
+            'parent_item_colon' => __( 'Parent Category:', 'redsuns-timeline' ),
+            'edit_item'         => __( 'Edit Category', 'redsuns-timeline' ),
+            'update_item'       => __( 'Update Category', 'redsuns-timeline' ),
+            'add_new_item'      => __( 'Add New Category', 'redsuns-timeline' ),
+            'new_item_name'     => __( 'New Category Name', 'redsuns-timeline' ),
+            'menu_name'         => __( 'Categories', 'redsuns-timeline' ),
+    );
+
+    $args = array(
+            'hierarchical'      => true,
+            'labels'            => $labels,
+            'show_ui'           => true,
+            'show_admin_column' => true,
+            'query_var'         => true,
+            'rewrite'           => array( 'slug' => 'timeline-category' ),
+    );
+
+    register_taxonomy( 'timeline-category', array( 'timeline' ), $args );
+}

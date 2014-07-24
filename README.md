@@ -44,26 +44,43 @@ Just enter in plugins section in Wordpress Admin, find **Redsuns Timeline** and 
 The events are simple WordPress posts. This way add some new events is just like to add a new post. Note that some fields are required.
 
 ####Required Fields
-* Data Inicial
-* Data Final
-* Crédito Mídia
-* Nome Alternativo
+* Initial Date
+* Final Date
+* Media Credit
+* Media Alt
 
 Note that is need to fill media info (Crédito Mídia / Nome Alternativo) this way stays clear that you must to provide an image or video link.
 
 
+##Categories
+
+You can link your timeline posts to one or more category and group timeline preview or show all timeline posts in a single timeline.
+
+In **Timeline** menu item you can find a submenu **Categories** where you can add which category you want. Fill up the name, the slug and description. Now you can link which timeline post you want to one or more category.
+
 ##Displaying Timeline
 
-In a page content editor just put the shortcode ```[timeline]```. Thats all!
+####Showing all timeline events
 
-Another way to use is calling the shortcode in a custom page template:
-```php
+In a page content editor just put the shortcode ``` [timeline] ```. Thats all!
+
+Another way to use is calling the shortcode in a custom page template: 
+
+```php    
 echo do_shortcode('[timeline]');
 ```
 
-##TODO
+###Showing timeline events by category
 
-* Set all entries and fields to english and create map to translate it
+In a page content editor just put the shortcode ```[timeline category-slug]```. Thats all!
+
+Another way to use is calling the shortcode in a custom page template:
+
+```php
+echo do_shortcode('[timeline category-slug]');
+```
+
+Example: ```[timeline carrer]```
 
 ##Author
 
