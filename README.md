@@ -49,7 +49,7 @@ The events are simple WordPress posts. This way add some new events is just like
 * Media Credit
 * Media Alt
 
-Note that is need to fill media info (Crédito Mídia / Nome Alternativo) this way stays clear that you must to provide an image or video link.
+Note that is need to fill media info (Media Credit / Media Alt) this way stays clear that you must to provide an image or video link.
 
 
 ##Categories
