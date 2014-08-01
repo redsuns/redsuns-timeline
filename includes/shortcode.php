@@ -164,6 +164,8 @@ function shortcode_timeline( $atts = null )
         $end_content['timeline']['date'] = $items; 
         $end_content = to_json($end_content);
         
+        wp_reset_query();
+        
         _output($end_content, $start_at_slide);
         
     } else {
