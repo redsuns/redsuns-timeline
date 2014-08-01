@@ -117,7 +117,6 @@ function shortcode_timeline( $atts = null )
     $count = 0;
     $items = array();
     $start_at_slide = !empty($atts) ? 0 : 1;
-    $end_content = sprintf('<div class="no-content"><h3>%s</h3></div>', __('Sorry, no items to show', 'redsuns-timeline'));
     
     $args = array(
         'post_type' => 'timeline',
@@ -132,7 +131,6 @@ function shortcode_timeline( $atts = null )
     query_posts($args);
     
     if( have_posts() ) {
-        unset($end_content);
         
         while(have_posts()) {
             the_post();
@@ -165,9 +163,12 @@ function shortcode_timeline( $atts = null )
         
         $end_content['timeline']['date'] = $items; 
         $end_content = to_json($end_content);
+        
+        _output($end_content, $start_at_slide);
+        
+    } else {
+        printf('<div class="no-content"><h3>%s</h3></div>', __('Sorry, no items to show', 'redsuns-timeline'));
     }
-    
-    _output($end_content, $start_at_slide);
 }
 
 add_shortcode( 'timeline', 'shortcode_timeline' );

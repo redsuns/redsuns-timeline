@@ -6,7 +6,6 @@
         "wordpress",
         "timeline"
     ],
-    "version" : "1.0",
     "authors": [
         {
             "name": "Redsuns Tecnologia e Design",
@@ -23,5 +22,11 @@
     "require": {
         "php": ">=5.3.3",
         "composer/installers": "*"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
     }
 }
