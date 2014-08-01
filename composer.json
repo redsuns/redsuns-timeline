@@ -23,10 +23,5 @@
         "php": ">=5.3.3",
         "composer/installers": "*"
     },
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.1.x-dev"
-        }
-    }
+    "minimum-stability": "dev"
 }
