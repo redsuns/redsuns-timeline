@@ -21,7 +21,7 @@ function register_advanced_custom_fields_post()
     if ( !$post_exists ) {
         $postarr = array(
             'post_name'         => 'acf_timeline_details',
-            'post_title'        => 'Timeline Details',
+            'post_title'        => __('Timeline Details', 'redsuns-timeline'),
             'post_status'       => 'publish',
             'post_type'         => 'acf',
             'post_author'       => 1,
@@ -48,7 +48,7 @@ function register_fields_to_previous_inserted_post($inserted_post)
     $initial_date_name = 'field_' . substr(md5('redsuns-timeline-initial-date'), 0, 13);
     $initial_date_options = array(
         'key' => $initial_date_name,
-        'label' => 'Initial Date',
+        'label' => __('Initial Date', 'redsuns-timeline'),
         'name' => 'initial_date',
         'type' => 'date_picker',
         'instructions' => '',
@@ -74,7 +74,7 @@ function register_fields_to_previous_inserted_post($inserted_post)
     $final_date_name = 'field_' . substr(md5('redsuns-timeline-final-date'), 0, 13);
     $final_date_options = array(
         'key' => $final_date_name,
-        'label' => 'Final Date',
+        'label' => __('Final Date', 'redsuns-timeline'),
         'name' => 'final_date',
         'type' => 'date_picker',
         'instructions' => '',
@@ -100,10 +100,10 @@ function register_fields_to_previous_inserted_post($inserted_post)
     $image_name = 'field_' . substr(md5('redsuns-timeline-image'), 0, 13);
     $image_options = array(
         'key' => $image_name,
-        'label' => 'Image',
+        'label' => __('Image', 'redsuns-timeline'),
         'name' => 'image',
         'type' => 'image',
-        'instructions' => 'The image is more relevant than video, so if an image and a video is provided to same post only the image will appear.',
+        'instructions' => __('The image is more relevant than video, so if an image and a video is provided to same post only the image will appear.', 'redsuns-timeline'),
         'required' => 0,
         'save_format' => 'object',
         'preview_size' => 'medium',
@@ -128,7 +128,7 @@ function register_fields_to_previous_inserted_post($inserted_post)
         'label' => 'Video',
         'name' => 'video',
         'type' => 'text',
-        'instructions' => 'Paste here the Youtube/Vimeo link. If an image was provided for this post just THE IMAGE will appear.',
+        'instructions' => __('Paste here the Youtube/Vimeo link. If an image was provided for this post just THE IMAGE will appear.', 'redsuns-timeline'),
         'required' => 0,
         'default_value' => '',
         'placeholder' => '',
@@ -153,10 +153,10 @@ function register_fields_to_previous_inserted_post($inserted_post)
     $media_credit_name = 'field_' . substr(md5('redsuns-timeline-media-credit'), 0, 13);
     $media_credit_options = array(
         'key' => $media_credit_name,
-        'label' => 'Media Credits',
+        'label' => __('Media Credits', 'redsuns-timeline'),
         'name' => 'media_credit',
         'type' => 'text',
-        'instructions' => 'Provide here the credits for Image/Video used on this timeline event',
+        'instructions' => __('Provide here the credits for Image/Video used on this timeline event', 'redsuns-timeline'),
         'required' => 1,
         'default_value' => '',
         'placeholder' => '',
@@ -183,10 +183,10 @@ function register_fields_to_previous_inserted_post($inserted_post)
     $media_caption_name = 'field_' . substr(md5('redsuns-timeline-media-caption'), 0, 13);
     $media_caption_options = array(
         'key' => $media_caption_name,
-        'label' => 'Media Caption',
+        'label' => __('Media Caption', 'redsuns-timeline'),
         'name' => 'media_caption',
         'type' => 'text',
-        'instructions' => 'The media caption',
+        'instructions' => __('The media caption', 'redsuns-timeline'),
         'required' => 1,
         'default_value' => '',
         'placeholder' => '',

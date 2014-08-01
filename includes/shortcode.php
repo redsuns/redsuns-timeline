@@ -93,16 +93,16 @@ function parse_media($image, $video)
  * Converts an array to a json string with right use from the tested PHP versions
  * >5.3, >5.4 and >5.5
  * 
- * @param array $end_json_content
+ * @param array $end_content
  * @return string
  */
-function to_json($end_json_content)
+function to_json($end_content)
 {
     if( 5.4 > (float) phpversion() ) {
-        return str_replace('\/', '/', json_encode($end_json_content));
+        return str_replace('\/', '/', json_encode($end_content));
     }
     
-    return json_encode($end_json_content, JSON_UNESCAPED_SLASHES);
+    return json_encode($end_content, JSON_UNESCAPED_SLASHES);
 }
 
 
@@ -114,9 +114,10 @@ function to_json($end_json_content)
  */
 function shortcode_timeline( $atts = null )
 {
-    $end_json_content = array_initial_structure();
     $count = 0;
     $items = array();
+    $start_at_slide = !empty($atts) ? 0 : 1;
+    $end_content = sprintf('<div class="no-content"><h3>%s</h3></div>', __('Sorry, no items to show', 'redsuns-timeline'));
     
     $args = array(
         'post_type' => 'timeline',
@@ -130,61 +131,69 @@ function shortcode_timeline( $atts = null )
     
     query_posts($args);
     
-    if ( have_posts() ) : while( have_posts() ) : the_post(); 
+    if( have_posts() ) {
+        unset($end_content);
         
-        if ( 0 === $count ) {
-            $end_json_content = first_item(get_the_title(), get_the_content(), get_field('initial_date'), $atts);
+        while(have_posts()) {
+            the_post();
+            
+            if ( 0 === $count ) {
+                $end_content = first_item(get_the_title(), get_the_content(), get_field('initial_date'), $atts);
+            }
+
+            $video = get_field('video');
+            $image = get_field('image');
+
+            $items[$count] = array(
+               'startDate' => date('Y,m,d', strtotime(get_field('initial_date'))),
+               'endDate' => date('Y,m,d', strtotime(get_field('final_date'))),
+               'headline' => get_the_title(),
+               'text' => get_the_content(),
+               'asset' => array(
+                   'media' => parse_media($image, $video),
+                   'credit' => get_field('media_credit'),
+                   'caption' => get_field('media_caption'),
+               ),
+            );
+
+            if (media_is_image($image) ) {
+                $items[$count]['asset']['thumbnail'] = $image['sizes']['thumbnail'];
+            }
+
+            $count++;
         }
         
-        $video = get_field('video');
-        $image = get_field('image');
-        
-        $items[$count] = array(
-           'startDate' => date('Y,m,d', strtotime(get_field('initial_date'))),
-           'endDate' => date('Y,m,d', strtotime(get_field('final_date'))),
-           'headline' => get_the_title(),
-           'text' => get_the_content(),
-           'asset' => array(
-               'media' => parse_media($image, $video),
-               'credit' => get_field('media_credit'),
-               'caption' => get_field('media_caption'),
-           ),
-        );
-        
-        if (media_is_image($image) ) {
-            $items[$count]['asset']['thumbnail'] = $image['sizes']['thumbnail'];
-        }
-        
-        $count++;
-        
-    endwhile;
+        $end_content['timeline']['date'] = $items; 
+        $end_content = to_json($end_content);
+    }
     
-        $end_json_content['timeline']['date'] = $items; 
-    ?>
-        
-        <div id="timeline-embed"></div>
+    _output($end_content, $start_at_slide);
+}
+
+add_shortcode( 'timeline', 'shortcode_timeline' );
+
+
+/**
+ * 
+ * @param mixed $end_content
+ * @param int $start_at_slide
+ */
+function _output($end_content, $start_at_slide)
+{ ?>
+    <link rel="stylesheet" type="text/css" href="http://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
+    <div id="timeline-embed"></div>
         <script>
             var timeline_config = {
                 width: '100%',
                 type: 'timeline',
                 height: '650',
-                source: <?php echo to_json($end_json_content); ?>,
+                source: <?php echo $end_content; ?>,
                 debug: true,
                 lang: 'pt-br',
-                start_at_slide: <?php echo !empty($atts) ? 0 : 1; ?>,
+                start_at_slide: <?php echo $start_at_slide; ?>,
                 font: 'PT'
                }
         </script>
         <script type="text/javascript" src="http://cdn.knightlab.com/libs/timeline/latest/js/storyjs-embed.js"></script>
-
-    <?php else : ?>
-        
-        <div class="no-content">
-            <h3>
-                <?php echo __('Sorry, no items to show', 'redsuns-timeline'); ?>
-            </h3>
-        </div>
-    <?php endif; 
+    <?php
 }
-
-add_shortcode( 'timeline', 'shortcode_timeline' );

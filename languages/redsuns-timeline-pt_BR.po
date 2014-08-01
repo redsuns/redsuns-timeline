@@ -1,4 +1,38 @@
 
+# INSTALLER
+
+    msgid "Timeline Details"
+    msgstr "Detalhes da Linha do tempo"
+
+    msgid "Initial Date"
+    msgstr "Data Inicial"
+
+    msgid "Final Date"
+    msgstr "Data Final"
+
+    msgid "Image"
+    msgstr "Imagem"
+
+    msgid "The image is more relevant than video, so if an image and a video is provided to same post only the image will appear."
+    msgstr "A imagem é mais relevante que o vídeo, desta forma se uma imagem e um video forem definidos somente a imagem estará visível"
+
+    msgid "Paste here the Youtube/Vimeo link. If an image was provided for this post just THE IMAGE will appear."
+    msgstr "Cole aqui a URL do Youtube/Vimeo. Se uma imagem já fora carregada somente ela aparecerá, o vídeo, se existir será ignorado"
+
+    msgid "Media Credits"
+    msgstr "Créditos da mídia"
+
+    msgid "Provide here the credits for Image/Video used on this timeline event"
+    msgstr "Forneça os créditos da imagem/video"
+
+    msgid "Media Caption"
+    msgstr "Título da mídia"
+
+    msgid "The media caption"
+    msgstr "O título da mídia"
+
+# INSTALLER
+
 # POST TYPE MANAGEMENT
     msgid "Creates manageable Timeline items for Knight Labs TimelineJs <a href="http://timeline.knightlab.com">http://timeline.knightlab.com</a>. <strong>ATTENTION:</strong> This plugin requires Advanced Cutsom Fields it to be installed and enabled."
     msgstr "Cria itens gerenciáveis para a Timeline desenvolvido pela Knight Lab (TimelineJS <a href="http://timeline.knightlab.com">http://timeline.knightlab.com</a>) <strong>ATENÇÃO: </strong>Este plugin requer que o plugin Advanced Custom Fields esteja instalado e habilitado."
@@ -87,9 +121,9 @@
 # POST TYPE MANAGEMENT
 
 
-# MESSAGES
+# GENERIC MESSAGES
 
     msgid "Sorry, no items to show"
     msgstr "Desculpe mas não existem eventos para a linha do tempo"
 
-# MESSAGES
+# GENERIC MESSAGES
