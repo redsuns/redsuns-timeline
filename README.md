@@ -20,7 +20,7 @@ Welcome, this is a plugin that provides management for Timeline items. It uses t
 
 ####Composer (Most recommended)
 
-Just type ```json "redsuns/redsuns-timeline" : "dev-master" ``` in your composer.json file.
+Just type ` "redsuns/redsuns-timeline" : "dev-master" ` in your composer.json file.
 
 
 ####Cloning
@@ -62,13 +62,11 @@ In **Timeline** menu item you can find a submenu **Categories** where you can ad
 
 ####Showing all timeline events
 
-In a page content editor just put the shortcode ``` [timeline] ```. Thats all!
+In a page content editor just put the shortcode ` [timeline] `. Thats all!
 
 Another way to use is calling the shortcode in a custom page template: 
 
-```php    
-echo do_shortcode('[timeline]');
-```
+`echo do_shortcode('[timeline]'); `
 
 ###Showing timeline events by category
 
@@ -86,12 +84,11 @@ Example: ```[timeline career]```
 
 [Redsuns Tecnologia e Desing][3]
 
-##Contributors
 
-Andre Cardoso - [https://github.com/andrebian][4]
+##[Contributors][4]
 
 
   [1]: timeline.knightlab.com
   [2]: http://knightlab.northwestern.edu/
   [3]: http://redsuns.com.br
-  [4]: https://github.com/andrebian
+  [4]: https://github.com/redsuns/redsuns-timeline/graphs/contributors
